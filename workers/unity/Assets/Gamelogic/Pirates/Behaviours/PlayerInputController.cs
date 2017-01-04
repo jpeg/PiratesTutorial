@@ -18,9 +18,21 @@ namespace Assets.Gamelogic.Pirates.Behaviours
 
         void Update ()
         {
-            ShipControlsWriter.Send(new ShipControls.Update()
+            ShipControls.Update shipControlsUpdate = new ShipControls.Update()
                 .SetTargetSpeed(Mathf.Clamp01(Input.GetAxis("Vertical")))
-                .SetTargetSteering(Input.GetAxis("Horizontal")));
+                .SetTargetSteering(Input.GetAxis("Horizontal"));
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                shipControlsUpdate.AddFireLeft(new FireLeft());
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                shipControlsUpdate.AddFireRight(new FireRight());
+            }
+
+            ShipControlsWriter.Send(shipControlsUpdate);
         }
     }
 }

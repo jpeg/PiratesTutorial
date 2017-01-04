@@ -46,4 +46,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+.spatialos
+*.build.json
+
 .idea/

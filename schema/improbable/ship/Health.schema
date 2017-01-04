@@ -1,0 +1,11 @@
+package improbable.ship;
+
+component Health {
+    // Schema file ID, unique within the project
+    id = 1004;
+
+    // Exclude this component from worker queries
+    option queryable = false;
+
+    int32 current_health = 1;
+}

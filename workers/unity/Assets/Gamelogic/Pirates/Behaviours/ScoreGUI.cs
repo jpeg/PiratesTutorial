@@ -17,6 +17,9 @@ namespace Assets.Gamelogic.Pirates.Behaviours
          */
         [Require] private ShipControls.Writer ShipControlsWriter;
 
+        [Require]
+        private Score.Reader ScoreReader;
+
         private Text totalPointsGUI;
 
         private void Awake()
@@ -28,10 +31,22 @@ namespace Assets.Gamelogic.Pirates.Behaviours
 
         private void OnEnable()
         {
+            ScoreReader.ComponentUpdated += OnComponentUpdated;
         }
 
         private void OnDisable()
         {
+            ScoreReader.ComponentUpdated -= OnComponentUpdated;
+        }
+
+        // Callback for whenever one or more property of the Score component is updated
+        private void OnComponentUpdated(Score.Update update)
+        {
+            // Update object will have values only for fields which have been updated
+            if (update.numberOfPoints.HasValue)
+            {
+                updateGUI(update.numberOfPoints.Value);
+            }
         }
 
         void updateGUI(int score)

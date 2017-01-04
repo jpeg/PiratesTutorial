@@ -1,0 +1,20 @@
+package improbable.ship;
+
+type AwardPoints {
+	uint32 amount = 1;
+}
+
+type AwardResponse {}
+
+component Score {
+    // Schema file ID, unique within the project
+    id = 1005;
+
+    // Exclude this component from spatial finds
+    option queryable = false;
+
+    int32 number_of_points = 1;
+
+    // Used by other entities to give points to entity with the Score component
+    command AwardPoints award_points returns AwardResponse;
+}
