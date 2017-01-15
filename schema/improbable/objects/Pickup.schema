@@ -1,0 +1,22 @@
+package improbable.objects;
+
+enum PickupType {
+    SUPPLIES = 0;
+    GOLD = 1;
+}
+
+type AwardPickupRequest {
+    PickupType pickup_type = 11;
+    int32 amount = 12;
+}
+
+type AwardPickupResponse {}
+
+component Pickup {
+    id = 2000;
+
+    PickupType pickup_type = 1;
+    int32 amount = 2;
+
+    command AwardPickupRequest award_pickup returns AwardPickupResponse;
+}

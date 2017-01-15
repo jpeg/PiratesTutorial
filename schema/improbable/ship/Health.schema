@@ -8,4 +8,5 @@ component Health {
     option queryable = false;
 
     int32 current_health = 1;
+    int32 max_health = 2;
 }

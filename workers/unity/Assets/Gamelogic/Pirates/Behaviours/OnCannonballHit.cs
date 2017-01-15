@@ -1,4 +1,7 @@
-﻿using Improbable;
+﻿using Assets.EntityTemplates;
+using Improbable;
+using Improbable.Math;
+using Improbable.Objects;
 using Improbable.Ship;
 using Improbable.Unity;
 using Improbable.Unity.Core;
@@ -39,6 +42,7 @@ namespace Assets.Gamelogic.Pirates.Cannons
                 if (newHealth <= 0)
                 {
                     AwardPointsForKill(new EntityId(other.GetComponent<DestroyCannonball>().firerEntityId.Id));
+                    SpawnPickup();
                 }
             }
         }
@@ -58,6 +62,42 @@ namespace Assets.Gamelogic.Pirates.Cannons
                     Debug.Log("AwardPoints command succeeded; awarded points: " + response.ToString());
                 }
             );
+        }
+
+        private void SpawnPickup()
+        {
+            string prefab;
+            PickupType type;
+            int amount;
+            var rand = Random.value;
+
+            // Determine pickup type and amount
+            if (rand >= 0.0f && rand <= 1.0f)
+            {
+                prefab = "Supplies";
+                type = PickupType.SUPPLIES;
+                amount = 400;
+            } else if (rand > 1.0) //gold not yet supported
+            {
+                prefab = "Gold";
+                type = PickupType.GOLD;
+                amount = Random.Range(10, 50);
+            } else
+            {
+                // Spawn nothing
+                return;
+            }
+
+            var position = new Coordinates(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+
+            SpatialOS.Commands.CreateEntity(HealthWriter, prefab, PickupEntityTemplate.GeneratePickupEntityTemplate(position, type, amount), result => {
+                if (result.StatusCode != StatusCode.Success)
+                {
+                    Debug.LogError("Failed to create " + prefab + " pickup entity with error: " + result.ErrorMessage);
+                    return;
+                }
+                Debug.Log("Created " + prefab + " pickup entity with Id: " + result.Response.Value);
+            });
         }
     }
 }

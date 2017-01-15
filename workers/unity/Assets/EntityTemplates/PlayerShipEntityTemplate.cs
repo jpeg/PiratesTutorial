@@ -5,6 +5,7 @@ using Improbable.Player;
 using Improbable.Ship;
 using Improbable.Unity.Core.Acls;
 using Improbable.Worker;
+using Improbable.Objects;
 
 namespace Assets.EntityTemplates
 {
@@ -18,8 +19,9 @@ namespace Assets.EntityTemplates
             playerEntityTemplate.Add(new WorldTransform.Data(new WorldTransformData(initialPosition, 0)));
             playerEntityTemplate.Add(new PlayerLifecycle.Data(new PlayerLifecycleData(0, 3, 10)));
             playerEntityTemplate.Add(new ShipControls.Data(new ShipControlsData(0, 0)));
-            playerEntityTemplate.Add(new Health.Data(new HealthData(1000)));
+            playerEntityTemplate.Add(new Health.Data(new HealthData(1000, 1000)));
             playerEntityTemplate.Add(new Score.Data(new ScoreData(0)));
+            playerEntityTemplate.Add(new Pickup.Data(new PickupData(0, 0)));
 
             // Grant component access permissions
             var acl = Acl.Build()
@@ -28,7 +30,8 @@ namespace Assets.EntityTemplates
                 .SetWriteAccess<ShipControls>(CommonPredicates.SpecificClientOnly(clientWorkerId))
                 .SetWriteAccess<PlayerLifecycle>(CommonPredicates.PhysicsOnly)
                 .SetWriteAccess<Health>(CommonPredicates.PhysicsOnly)
-                .SetWriteAccess<Score>(CommonPredicates.PhysicsOnly);
+                .SetWriteAccess<Score>(CommonPredicates.PhysicsOnly)
+                .SetWriteAccess<Pickup>(CommonPredicates.PhysicsOnly);
             playerEntityTemplate.SetAcl(acl);
 
             return playerEntityTemplate;

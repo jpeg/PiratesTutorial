@@ -27,15 +27,17 @@ GameObject:
   m_Component:
   - 4: {fileID: 421518}
   - 54: {fileID: 5458276}
+  - 114: {fileID: 114000013533608780}
   - 114: {fileID: 114000014128938252}
   - 114: {fileID: 114000014179605780}
   - 114: {fileID: 114000012938219408}
   - 114: {fileID: 114000012598071580}
   - 114: {fileID: 114000012025345378}
   - 114: {fileID: 114000010949350208}
+  - 114: {fileID: 114000013706234390}
   m_Layer: 0
   m_Name: PirateShip
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -579,6 +581,28 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e8cb129b8451f44aa7182ee5ffb3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000013533608780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107220}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cbeadddf1d6cf4081f34ecbbb6bd13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000013706234390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107220}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac3479780d0b204dbb8a119897e3d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114000014128938252

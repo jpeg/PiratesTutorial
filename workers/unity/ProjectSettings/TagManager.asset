@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Spawner
   - Cannonball
+  - Pickup
+  - Ship
   layers:
   - Default
   - TransparentFX

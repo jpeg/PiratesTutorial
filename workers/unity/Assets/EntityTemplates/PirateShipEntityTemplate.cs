@@ -29,7 +29,7 @@ namespace Assets.EntityTemplates
 
             // Define components attached to snapshot entity
             pirateSnapshotEntity.Add(new WorldTransform.Data(new WorldTransformData(pirateCoordinates, pirateRotation)));
-            pirateSnapshotEntity.Add(new Health.Data(new HealthData(500)));
+            pirateSnapshotEntity.Add(new Health.Data(new HealthData(500, 500)));
             pirateSnapshotEntity.Add(new ShipControls.Data(new ShipControlsData(0, 0)));
 
             // Grant FSim (server-side) workers write-access over all of this entity's components, read-access for visual (e.g. client) workers
